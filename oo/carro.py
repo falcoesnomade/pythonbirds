@@ -1,4 +1,4 @@
-'''Voce deve criar uma classe carro que vai possuir dois atributos compostos por outras duas classe
+''' Voce deve criar uma classe carro que vai possuir dois atributos compostos por outras duas classe
 1) Motor
 2) Direção
 
@@ -18,7 +18,7 @@ O   L
   S
     Exemplo:
     >>> # Testando motor
-    >>> motor= Motor()
+    >>> motor = Motor()
     >>> motor.velocidade
     0
     >>> motor.acelerar()
@@ -30,12 +30,14 @@ O   L
     >>> motor.acelerar()
     >>> motor.velocidade
     3
-    >>> motor= frear()
+
+    >>> motor.frear()
     >>> motor.velocidade
     1
-    >>> motor= frear()
+    >>> motor.frear()
     >>> motor.velocidade
     0
+
     >>> #Testando Direcao
     >>> direcao = Direcao()
     >>> direcao.valor
@@ -64,7 +66,8 @@ O   L
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Norte'
-    >>> carro = Carro (direcao, motor)
+
+    >>> carro = Carro(direcao, motor)
     >>> carro.calcular_velocidade()
     0
     >>> carro.acelerar()
@@ -77,21 +80,44 @@ O   L
     >>> carro.calcular_velocidade()
     0
     >>> carro.calcular_direcao()
-    >>> 'Norte'
+    'Norte'
     >>> carro.girar_a_direita()
     >>> carro.calcular_direcao()
-    >>> 'Leste'
-    >>> carro.girar_a_desquerda()
-    >>> carro.calcular_direcao()
-    >>> 'Norte'
+    'Leste'
     >>> carro.girar_a_esquerda()
     >>> carro.calcular_direcao()
-    >>> 'Oeste'
+    'Norte'
+    >>> carro.girar_a_esquerda()
+    >>> carro.calcular_direcao()
+    'Oeste'
 
 '''
 
-NORTE ='Norte'
-SUL = 'SUL'
+class Carro:
+    def __init__(self, direcao, motor):
+        self.motor = motor
+        self.direcao = direcao
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_a_esquerda()
+
+NORTE = 'Norte'
+SUL = 'Sul'
 LESTE ='Leste'
 OESTE ='Oeste'
 
@@ -116,4 +142,4 @@ class Motor:
 
     def frear(self):
         self.velocidade -= 2
-        self.velocidade=max(0, self.velocidade)
+        self.velocidade = max(0, self.velocidade)
